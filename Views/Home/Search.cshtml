@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Result search";
+}
+@model List<dynamic>
+
+
+<!doctype html>
+<html>
+<head>
+    <title>Trang View đầu tiên</title>
+</head>
+<body>
+    <select>lọc theo lượt views: </select>
+
+    @{
+        
+        int count = 0;
+        //@Model["hits"][0]["videos"]["medium"]["url"]
+        @foreach(var obj in Model)
+        {
+            @foreach(var imgage in obj["hits"])
+            {
+                ++count;
+                <img src=@imgage["webformatURL"] width="100" height="100"/>
+                <span>lượt xem : @imgage["views"]</span>
+                <span>lượt like: @imgage["likes"]</span>
+                <br />
+            }
+        }
+        <span>@count</span>
+    }
+    
+
+
+    @* <span>@Model["hits"][0]["webformatURL"]</span> *@
+
+</body>
+</html>
